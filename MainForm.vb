@@ -28,7 +28,7 @@ Public Class MainForm
     Public databaseFolder As String = "c:\HospitalDatabase\OrderFiles"
     Public rpaFolder As String = "C:\HospitalDatabase\RPAInbound\"
     'Public pdfFolder As String = "C:\Users\dch\OneDrive - DCH Holdings Limited (1)\HospitalDatabase\PdfOrderFiles"
-    Public pdfFolder As String = "T:\HospitalDatabase\PdfOrderFiles"
+    Public pdfFolder As String = "C:\HospitalDatabase\PdfOrderFiles"
     Public hospitalSelected As String = "SingHealth"
     Public POtoProcess As String
     Dim folderName As String
@@ -1652,7 +1652,6 @@ Public Class MainForm
         'insert into the sql
         If shiptoDT.Rows.Count > 0 Then
             'Dim consString As String = "Data Source=DESKTOP-S3PGIOO\SQLEXPRESS;User ID=lynn;Password=Skm9627j#;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
-
             Using con As New SqlConnection(consString)
                 Using cmd As New SqlCommand("Insert_ShipTo")
                     cmd.CommandType = CommandType.StoredProcedure
@@ -1670,6 +1669,11 @@ Public Class MainForm
 
     Private Sub ButtonRotatePDF_Click(sender As Object, e As EventArgs) Handles ButtonRotate90.Click
 
+        POtoProcess = "Ultiva.pdf"
+        hospitalSelected = "PARKWAY"
+        'retreive from database
+
+        folderName = "FB023562-2533-EB11-8C77-082E5F03BB51"
         'Load a PDF document
         Dim ldoc As PdfLoadedDocument = New PdfLoadedDocument(pdfFolder + "\" + hospitalSelected + "\" + POtoProcess)
         'Create a new instance of PdfDocument class
